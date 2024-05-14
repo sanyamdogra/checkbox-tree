@@ -1,15 +1,13 @@
-import { useCategories } from '../../hooks/useCategories';
+import CheckboxTree from '../../components/CheckboxTree';
+
 import './styles.css';
 
 function App() {
-  const { categories } = useCategories();
-
-  console.log(categories, 'categories');
-
   return (
-    <>
+    <div className='container'>
       <h3>Checkbox Tree Component</h3>
-    </>
+      <CheckboxTree />
+    </div>
   );
 }
 
