@@ -1,0 +1,16 @@
+.checkbox-tree-wrapper {
+  margin: 1rem 0;
+}
+
+.checkbox-tree-button {
+  margin: 1rem 0;
+}
+
+.checkbox-tree-clear-button {
+  margin: 1rem 0;
+  margin-left: 0.5rem;
+}
+
+.checkbox-node-children {
+  margin-left: 1rem;
+}

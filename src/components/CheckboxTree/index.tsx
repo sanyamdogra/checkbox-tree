@@ -3,11 +3,15 @@ import React from 'react';
 import CheckboxNode from '../CheckboxNode';
 import { useCategories } from '../../hooks/useCategories';
 
+import './styles.css';
+
 const CheckboxTree: React.FC = () => {
   const {
     categories,
     selectedCategories,
     expandedCategories,
+    handleSelectAll,
+    handleClearAll,
     toggleCategorySelection,
     toggleCategoryExpansion
   } = useCategories();
@@ -29,13 +33,27 @@ const CheckboxTree: React.FC = () => {
             onClick={() => toggleCategoryExpansion(category.id)}
             isSelected={isSelected}
           />
-          {isExpanded && <div>{renderCheckboxNodes(category.id)}</div>}
+          {isExpanded && (
+            <div className='checkbox-node-children'>
+              {renderCheckboxNodes(category.id)}
+            </div>
+          )}
         </div>
       );
     });
   };
 
-  return <div>{renderCheckboxNodes()}</div>;
+  return (
+    <div className='checkbox-tree-container'>
+      <button onClick={handleSelectAll} className='checkbox-tree-button'>
+        Select All
+      </button>
+      <button onClick={handleClearAll} className='checkbox-tree-clear-button'>
+        Clear All
+      </button>
+      <div className='checkbox-tree-wrapper'>{renderCheckboxNodes()}</div>
+    </div>
+  );
 };
 
 export default CheckboxTree;

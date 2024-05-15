@@ -5,7 +5,7 @@ import './styles.css';
 function App() {
   return (
     <div className='container'>
-      <h3>Checkbox Tree Component</h3>
+      <h2>Checkbox Tree Component</h2>
       <CheckboxTree />
     </div>
   );

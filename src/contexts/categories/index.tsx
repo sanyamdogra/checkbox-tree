@@ -13,6 +13,8 @@ export interface CategoriesContextValue {
   categories: Category[];
   selectedCategories: string[];
   expandedCategories: string[];
+  handleSelectAll: VoidFunction;
+  handleClearAll: VoidFunction;
   toggleCategorySelection: (categoryId: string) => void;
   toggleCategoryExpansion: (categoryId: string) => void;
 }
@@ -24,6 +26,8 @@ export const CategoriesContext = createContext<CategoriesContextValue>({
   categories: [],
   selectedCategories: [],
   expandedCategories: [],
+  handleSelectAll: () => {},
+  handleClearAll: () => {},
   toggleCategorySelection: () => {},
   toggleCategoryExpansion: () => {}
 });
@@ -84,11 +88,22 @@ export const CategoriesProvider: React.FC<{ children: React.ReactNode }> = ({
     [expandedCategories]
   );
 
+  const handleSelectAll = useCallback(() => {
+    const allCategoryIds = categories.map((category) => category.id);
+    setSelectedCategories(allCategoryIds);
+  }, [categories]);
+
+  const handleClearAll = useCallback(() => {
+    setSelectedCategories([]);
+  }, []);
+
   const values = useMemo<CategoriesContextValue>(
     () => ({
       categories,
       selectedCategories,
       expandedCategories,
+      handleSelectAll,
+      handleClearAll,
       toggleCategorySelection,
       toggleCategoryExpansion
     }),
@@ -96,6 +111,8 @@ export const CategoriesProvider: React.FC<{ children: React.ReactNode }> = ({
       categories,
       selectedCategories,
       expandedCategories,
+      handleSelectAll,
+      handleClearAll,
       toggleCategorySelection,
       toggleCategoryExpansion
     ]
