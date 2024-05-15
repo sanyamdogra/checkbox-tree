@@ -1,6 +1,9 @@
 import React from 'react';
 
 import { Category } from '../../common/types';
+import { useCategories } from '../../hooks/useCategories';
+
+import './styles.css';
 
 interface Props {
   category: Category;
@@ -15,10 +18,21 @@ const CheckboxNode: React.FC<Props> = ({
   onChange,
   onClick
 }) => {
+  const { categories } = useCategories();
+
+  const hasChildrenNodes = Boolean(
+    categories.find((cat) => cat.parent === category.id)
+  );
+
   return (
     <>
       <input type='checkbox' checked={isSelected} onChange={onChange} />
-      <label onClick={onClick}>{category.name}</label>
+      <label
+        onClick={onClick}
+        className={hasChildrenNodes ? 'checkbox-node-label' : ''}
+      >
+        {category.name}
+      </label>
     </>
   );
 };
