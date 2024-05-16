@@ -30,6 +30,7 @@ const CheckboxNode: React.FC<Props> = ({
       <label
         onClick={onClick}
         className={hasChildrenNodes ? 'checkbox-node-label' : ''}
+        data-testid={`checkbox-node-label-${category.id}`}
       >
         {category.name}
       </label>

@@ -26,7 +26,7 @@ const CheckboxTree: React.FC = () => {
       const isExpanded = expandedCategories.includes(category.id);
 
       return (
-        <div key={category.id}>
+        <div key={category.id} data-testid='checkbox-tree-wrapper'>
           <CheckboxNode
             category={category}
             onChange={() => toggleCategorySelection(category.id)}
@@ -34,7 +34,10 @@ const CheckboxTree: React.FC = () => {
             isSelected={isSelected}
           />
           {isExpanded && (
-            <div className='checkbox-node-children'>
+            <div
+              className='checkbox-node-children'
+              data-testid='checkbox-tree-children'
+            >
               {renderCheckboxNodes(category.id)}
             </div>
           )}
