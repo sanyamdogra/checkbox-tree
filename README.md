@@ -6,6 +6,11 @@ A web app to demonstrate a checkbox tree component
 
 https://checkbox-tree-comp.vercel.app/
 
+## Screenshots 📷
+
+<img width="702" alt="Screenshot 2024-05-16 at 12 14 18" src="https://github.com/sanyamdogra/checkbox-tree/assets/33497630/01fa9cf2-4fff-442a-98bf-0fd216cda220">
+
+
 ## Technologies Used ⚙️
 
 - React + Vite + TS
